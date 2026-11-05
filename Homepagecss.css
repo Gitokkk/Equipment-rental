@@ -29,6 +29,7 @@ body{
     box-sizing: border-box;
     background-color: darkblue;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .login-button{
@@ -112,8 +113,9 @@ body{
     }
 
     .top {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         gap: 10px;
         width: 100%;
         height: auto;
@@ -140,7 +142,6 @@ body{
     }
 
     .search-box {
-        grid-column: 1 / -1;
         width: 100%;
         height: 40px;
     }
