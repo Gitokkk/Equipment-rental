@@ -1,101 +1,96 @@
-body{
-    background-color:lightseagreen;
-}
-.logo{
-    width:100px;
-    height:100px;
-}
-.search-box{
-    display:flex;
-    flex:1;
-    gap: 10px;
-    height: 40px;
-}
-.search-box input{
-    flex:1
-}
-.search-button{
-    width:75px;
-    color: #059669;
-    font-weight: bold;
+/* ================= GLOBAL STYLES ================= */
+body {
+    background-color: lightseagreen;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.top{
-    display:flex;
+.logo, .logomob {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.top {
+    display: flex;
     width: 100%;
-    height: 100px;
     align-items: center;
-    padding:0 20px;
+    padding: 10px 20px;
     box-sizing: border-box;
     background-color: darkblue;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
-.login-button{
+.desktop-only {
+    display: flex;
+    height: 100px;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    height: 40px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.search-button, .search_button {
+    width: 75px;
+    color: #059669;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-button {
     width: 100px;
-    height: 70px;
+    height: 45px;
     align-items: center;
     justify-content: center;
     display: flex;
     color: #059669;
-    font-weight: bold;
-    margin-left: 20px;
-}
-.orders{
-    display: flex;
-    align-items: center;
-    gap: 0px;
-}
-.cart{
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    margin-left: 20px;
-}
-.orders-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #059669;
-    height: 70px;
-    width:80px;
     font-weight: bold;
     background-color: white;
-    border:none;
+    border: none;
+    cursor: pointer;
 }
-.cart-button{
+
+.orders, .cart {
+    display: flex;
+    align-items: center;
+}
+
+.orders-button, .cart-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70px;
+    color: #059669;
+    height: 45px;
     width: 80px;
-    color: #059669;
-    background-color: white;
     font-weight: bold;
-    border:none;
+    background-color: white;
+    border: none;
 }
-.cart-image{
+
+.cart-image, .orders-image {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70px;
-    width: 70px;
+    height: 45px;
+    width: 50px;
     background-color: white;
 }
-.orders-image{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 80px;
-    background-color: white;
-}
-.search_button{
-    color: #059669;
-    font-weight: bold;
-}
-.location{
+
+.location {
     display: flex;
     align-items: center;
     padding: 10px 15px;
@@ -103,67 +98,83 @@ body{
     color: #059669;
     font-weight: bold;
     background-color: white;
-    height: auto;
 }
 
-@media (max-width: 700px) {
-    body {
-        margin: 0;
+
+@media (max-width: 1032px) {
+    .desktop-only {
+        display: none;
     }
 
-    .top {
+    .mobile-only {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between; /* Spreads items evenly */
-        align-items: center;
-        width: 100%;
-        height: auto;
-        padding: 10px;
+        flex-direction: column;
         gap: 10px;
     }
 
-    .logo {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-    }
-
-    .location {
-        padding: 6px 10px;
-        font-size: 13px;
-        white-space: nowrap;
-    }
-
-    /* Force search box to take its own complete line */
-    .search-box {
+    .main-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         width: 100%;
-        height: 40px;
-        order: 2; /* Puts search bar right below the top row */
+        gap: 6px; 
     }
 
-    .search-box input {
+    .hamburger-btn {
+        display: block;
+        font-size: 22px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .logomob {
+        width: 38px;
+        height: 38px;
+    }
+
+    .searchmob {
+        display: flex;
+        flex: 1;
+        height: 36px;
+        min-width: 0; 
+    }
+
+    .searchmob input {
         width: 100%;
-    }
-
-    /* Group your bottom buttons nicely */
-    .orders,
-    .cart {
-        margin-left: 0;
-    }
-
-    .orders-button,
-    .cart-button,
-    .login-button {
-        height: 45px;
-        width: auto;
-        padding: 0 10px;
+        min-width: 0;
+        padding: 0 6px;
         font-size: 12px;
     }
 
-    .orders-image,
-    .cart-image {
-        height: 45px;
-        width: 45px;
+    .search-buttonmob {
+        padding: 0 8px;
+        color: #059669;
+        font-weight: bold;
+        background-color: white;
+        border: none;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .loginmob {
+        height: 36px;
+        padding: 0 10px;
+        color: #059669;
+        font-weight: bold;
+        background-color: white;
+        border: none;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .dropdown-menu {
+        display: none;
+        flex-direction: row;
+        gap: 10px;
+        padding-top: 5px;
+    }
+
+    #menu-toggle:checked ~ .dropdown-menu {
+        display: flex;
     }
 }
-
