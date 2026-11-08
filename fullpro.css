@@ -227,4 +227,26 @@ body {
 
     #menu-toggle:checked ~ .dropdown-menu {
         display: flex;
-    }}
+    }
+    
+.logomob {
+    height: 32px !important ;    
+    width: auto !important;      
+    object-fit: contain;
+}
+
+
+.mainheading {
+    height: auto;          
+    width: 90%;         
+    max-width: 450px;       
+    background-color: #fff1b7;
+    color: #059669;
+    margin: 0 auto 20px auto; 
+    border-radius: 20px;
+    text-align: center;
+    padding: 15px 20px;
+    font-weight: 850;
+    font-size: x-large;     
+}
+}

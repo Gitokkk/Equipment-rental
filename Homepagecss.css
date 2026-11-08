@@ -258,4 +258,11 @@ body {
     .headingofhowwework, .headingwhatweare{
         font-size: larger;
     }
+    .logomob {
+    height: 32px !important;    
+    width: auto !important;      
+    object-fit: contain;
+}
+
+
 }
