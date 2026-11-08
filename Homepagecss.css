@@ -1,8 +1,20 @@
 
 body {
-    background-color: lightseagreen;
+    background-color: #cdf8e2;
     margin: 0;
     font-family: Arial, sans-serif;
+}
+
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-link img {
+    height: 70px;      
+    width: auto;       
+    object-fit: contain;
 }
 
 .logo, .logomob {
@@ -17,7 +29,7 @@ body {
     align-items: center;
     padding: 10px 20px;
     box-sizing: border-box;
-    background-color: darkblue;
+    background-color: #14532d;
     gap: 20px;
 }
 
@@ -100,7 +112,7 @@ body {
     background-color: white;
 }
 .intro{
-    background-color: darkblue;
+    background-color: #14532d;
     border-radius: 10px;
     align-items: center;
     display: flex;
@@ -118,11 +130,10 @@ body {
     gap: 20px;
     flex:1;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .headingwhatweare{
     color: #059669;
-    font-weight: bolder;
+    font-weight: 800;
     text-align: center;
     gap: 20px;
     font-size: x-large;
@@ -130,6 +141,7 @@ body {
 .textofwhatweare{
     color: #059669;
     line-height: 1.4;
+    font-weight: bold;
 }
 .howdowework{
     background-color: #fff1b7;
@@ -143,7 +155,7 @@ body {
 }
 .headingofhowwework{
     color: #059669;
-    font-weight: bolder;
+    font-weight: 900;
     text-align: center;
     gap: 20px;
     font-size: x-large;
@@ -151,6 +163,7 @@ body {
 .textofhowwework{
     color: #059669;
     line-height: 1.4;
+    font-weight: bold;
 }
 
 
