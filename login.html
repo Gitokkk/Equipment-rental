@@ -1,73 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Among Us</title>
-    <link rel="stylesheet" href="Homepagecss.css">
-    <link rel="icon" type = "img/png" href = "Logo.png">
-    <style>
-        .login-box {
-            max-width: 400px;
-            margin: 50px auto;
-            background-color: #14532d;
-            padding: 30px;
-            border-radius: 20px;
-            color: white;
-        }
-        .login-box form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .login-box input, .login-box select {
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-        }
-        .login-box button {
-            background-color: #fff1b7;
-            color: #059669;
-            font-weight: bold;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login page</title>
+        <link rel="icon" type = "img/png" href = "Logo.png">
+         <style>
+        body {
+    background-color: #cdf8e2;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.mainlogin {
+    max-width: 400px;
+    background-color: #14532d;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.noexist{
+    color: red;
+    font-size: 18px;
+    display: none;
+}
+
+.mainlogin h1 {
+    color: #fff1b7;
+    text-align: center;
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.entering {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: white;
+    font-size: 15px;
+    margin: 0;
+}
+
+.entering input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+
+.entering button {
+    background-color: #fff1b7;
+    color: #059669;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.entering button:hover {
+    background-color: #fef08a;
+}
+
+.newuser {
+    color: #fff1b7;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    text-decoration: underline;
+}
     </style>
-</head>
+    </head>
 <body>
-    <div class="login-box">
-        <h2 style="text-align: center; color: #fff1b7;">Student Login</h2>
-        <form id="real-login-form">
-            <label>Enter your full name</label>
-            <input type="text" id="username-input" placeholder="Enter your name" required>
-
-            <label>Select College</label>
-            <select required>
-                <option value="" disabled selected>Choose college</option>
-                <option value="campus1">Ramaiah University of Applied Sciences (GG campus)</option>
-                <option value="campus2">Ramaiah University of Applied Sciences (RT campus)</option>
-            </select>
-
-            <label>Enter username</label>
-            <input type="text" id="username" placeholder="Enter a username" required>
+    <div class="mainlogin">
+        <h1>Login</h1>
+        <form class="entering" id="login-form">
+            <label>Enter username or E-mail</label>
+            <input type="text" id="username" placeholder="Enter a username or email" required>
+            
             <label>Enter password</label>
-            <input type="text" id="username" placeholder="Enter a password" required>
-            <label>Upload ID Card Photo</label>
-            <input type="file" accept="image/*" required>
-
-            <button type="submit">Submit</button>
+            <input type="text" id="password" placeholder="Enter a password" required>
+            
+            <button type="submit" id="submitbuttoncuh">Submit</button>
+            <label class="noexist">Wrong username or password.</label>
+            <a href="newuser.html" class="newuser">New user? Make an account here!</a>
         </form>
     </div>
 
     <script>
-        document.getElementById('real-login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('username-input').value;
-            localStorage.setItem('startupUser', name);
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault(); 
 
-            window.location.href = 'index.html';
+            const messageLabel = document.querySelector('.noexist');
+            messageLabel.style.display = 'block';
+            messageLabel.textContent = "Wrong username or password.";
         });
     </script>
+</body>
 </body>
 </html>
