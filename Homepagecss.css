@@ -79,6 +79,7 @@ body {
 .orders, .cart {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .orders-button, .cart-button {
@@ -91,6 +92,7 @@ body {
     font-weight: bold;
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
 .cart-image, .orders-image {
@@ -165,7 +167,12 @@ body {
     line-height: 1.4;
     font-weight: bold;
 }
-
+.cart-link-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
 @media (max-width: 1032px) {
@@ -262,6 +269,12 @@ body {
     height: 32px !important;    
     width: auto !important;      
     object-fit: contain;
+}
+.cart-link-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 

@@ -1,12 +1,28 @@
-let equipment = ["Camera","Tripod","Dissection kit","Beaker","China dish","Calculator"];
-let searchbutton = document.getElementById("search_button");
-searchbutton.addEventListener("click",function(){
-    let searchtext = document.getElementById("equipment_search").value.toLowerCase();
-    let results = equipment.filter(function(item){
-        return item.toLowerCase().includes(searchtext);
-    })
-    if(results.length>0){
-        alert("its present")
+document.addEventListener("DOMContentLoaded", () => {
+    const storedUser = localStorage.getItem("startupUser");
+
+    if (storedUser) {
+        // Find all login buttons (desktop and mobile)
+        const loginButtons = document.querySelectorAll("#login-btn-desk, #login-btn-mob, .login-button, .loginmob");
+
+        loginButtons.forEach((loginButton) => {
+            loginButton.textContent = storedUser;
+            loginButton.style.backgroundColor = "#fff1b7";
+
+            // Remove the link so it doesn't go back to login.html
+            const parentLink = loginButton.closest("a");
+            if (parentLink) {
+                parentLink.removeAttribute("href");
+            }
+
+            // Click to logout
+            loginButton.onclick = (e) => {
+                e.preventDefault();
+                if (confirm("Log out?")) {
+                    localStorage.removeItem("startupUser");
+                    location.reload();
+                }
+            };
+        });
     }
-    
-})
+});

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Among Us</title>
+    <link rel="stylesheet" href="Homepagecss.css">
+    <style>
+        .login-box {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #14532d;
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+        }
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .login-box input, .login-box select {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        .login-box button {
+            background-color: #fff1b7;
+            color: #059669;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2 style="text-align: center; color: #fff1b7;">Student Login</h2>
+        <form id="real-login-form">
+            <label>Name / Nickname</label>
+            <input type="text" id="username-input" placeholder="Enter your name" required>
+
+            <label>Select College</label>
+            <select required>
+                <option value="" disabled selected>Choose college</option>
+                <option value="campus1">Campus A</option>
+                <option value="campus2">Campus B</option>
+            </select>
+
+            <label>Upload ID Card Photo</label>
+            <input type="file" accept="image/*" required>
+
+            <button type="submit">Submit for Approval</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('real-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('username-input').value;
+            localStorage.setItem('startupUser', name);
+
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

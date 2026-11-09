@@ -98,6 +98,7 @@ body {
     height: 45px;
     width: 50px;
     background-color: white;
+    cursor: pointer;
 }
 
 .location {
@@ -146,6 +147,12 @@ body {
     font-weight: bold;
     line-height: 1.6;
     font-size: large;
+}
+.cart-link-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 @media (max-width: 1032px) {
     .desktop-only {
@@ -248,5 +255,11 @@ body {
     padding: 15px 20px;
     font-weight: 850;
     font-size: x-large;     
+}
+.cart-link-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 }
