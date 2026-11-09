@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         loginButtons.forEach((loginButton) => {
             loginButton.textContent = storedUser;
-            loginButton.style.backgroundColor = "#fff1b7";
+            loginButton.style.backgroundColor = "#fffffd";
 
             // Remove the link so it doesn't go back to login.html
             const parentLink = loginButton.closest("a");
