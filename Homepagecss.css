@@ -173,6 +173,23 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+.logout-popup {
+    display: none;
+    position: absolute;
+    background-color: #14532d;
+    border: 2px solid #fff1b7;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff1b7;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.logout-popup:hover {
+    background-color: #059669;
+    color: white;
+}
 
 
 @media (max-width: 1032px) {
