@@ -3,110 +3,116 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login page</title>
-        <link rel="icon" type = "img/png" href = "Logo.png">
-         <style>
-        body {
-    background-color: #cdf8e2;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.mainlogin {
-    max-width: 400px;
-    background-color: #14532d;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-.noexist{
-    color: red;
-    font-size: 18px;
-    display: none;
-}
-
-.mainlogin h1 {
-    color: #fff1b7;
-    text-align: center;
-    margin-top: 0;
-    font-size: 28px;
-}
-
-.entering {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    color: white;
-    font-size: 15px;
-    margin: 0;
-}
-
-.entering input {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-}
-
-.entering button {
-    background-color: #fff1b7;
-    color: #059669;
-    font-weight: bold;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.entering button:hover {
-    background-color: #fef08a;
-}
-
-.newuser {
-    color: #fff1b7;
-    text-align: center;
-    padding-top: 10px;
-    font-size: 14px;
-    text-decoration: underline;
-}
-.goback{
-    display: block;
-    color: white;
-    text-align: left;
-    margin-bottom: 20px;
-    font-weight: bolder;
-    text-decoration: underline;
-}
-    </style>
+        <link rel="icon" type="img/png" href="Logo.png">
+        <style>
+            body {
+                background-color: #cdf8e2;
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+            .mainlogin {
+                max-width: 400px;
+                background-color: #14532d;
+                margin: 40px auto;
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+            .noexist {
+                color: red;
+                font-size: 18px;
+                display: none;
+            }
+            .mainlogin h1 {
+                color: #fff1b7;
+                text-align: center;
+                margin-top: 0;
+                font-size: 28px;
+            }
+            .entering {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                color: white;
+                font-size: 15px;
+                margin: 0;
+            }
+            .entering input {
+                padding: 10px;
+                border-radius: 8px;
+                border: none;
+                font-size: 14px;
+            }
+            .entering button {
+                background-color: #fff1b7;
+                color: #059669;
+                font-weight: bold;
+                padding: 12px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+            }
+            .entering button:hover {
+                background-color: #fef08a;
+            }
+            .newuser {
+                color: #fff1b7;
+                text-align: center;
+                padding-top: 10px;
+                font-size: 14px;
+                text-decoration: underline;
+            }
+            .goback {
+                display: block;
+                color: white;
+                text-align: left;
+                margin-bottom: 20px;
+                font-weight: bolder;
+                text-decoration: underline;
+            }
+        </style>
     </head>
-<body>
-    <div class="mainlogin">
-        <h1>Login</h1>
-        <a href="index.html" class="goback">Go to Homepage</a>
-        <form class="entering" id="login-form">
-            <label>Mobile Number</label>
-            <input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Enter mobile number" required>
-            
-            <label>Enter password</label>
-            <input type="text" id="password" placeholder="Enter a password" required>
-            
-            <button type="submit" id="submitbuttoncuh">Submit</button>
-            <label class="noexist">Wrong username or password.</label>
-            <a href="newuser.html" class="newuser">New user? Make an account here!</a>
-        </form>
-    </div>
+    <body>
+        <div class="mainlogin">
+            <h1>Login</h1>
+            <a href="index.html" class="goback">Go to Homepage</a>
+            <form class="entering" id="login-form">
+                <label>Mobile Number</label>
+                <input type="tel" id="login-mobile" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" required>
+                
+                <label>Enter password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                
+                <button type="submit" id="submitbuttoncuh">Submit</button>
+                <label class="noexist">Wrong mobile number or password.</label>
+                <a href="newuser.html" class="newuser">New user? Make an account here!</a>
+            </form>
+        </div>
 
-    <script>
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault(); 
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                
+                if (localStorage.getItem("startupUser")) {
+                    window.location.replace("index.html");
+                }
+            });
 
-            const messageLabel = document.querySelector('.noexist');
-            messageLabel.style.display = 'block';
-            messageLabel.textContent = "Wrong username or password.";
-        });
-    </script>
-</body>
-</body>
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault(); 
+                const mobileInput = document.getElementById('login-mobile').value.trim();
+                
+                if (mobileInput.length === 10) {
+                    localStorage.setItem("startupUser", "User");
+                    localStorage.setItem("startupCollege", "College");
+                    window.location.replace("index.html");
+                } else {
+                    const messageLabel = document.querySelector('.noexist');
+                    messageLabel.style.display = 'block';
+                    messageLabel.textContent = "Please enter a valid 10-digit mobile number.";
+                }
+            });
+        </script>
+    </body>
 </html>

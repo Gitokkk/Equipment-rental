@@ -54,7 +54,7 @@
             <label>Enter username</label>
             <input type="text" id="username" placeholder="Enter a username" required>
             <label>Enter password</label>
-            <input type="text" id="username" placeholder="Enter a password" required>
+            <input type="text" id="username" placeholder="Enter a password" autocomplete="off" required>
             <label>Upload ID Card Photo</label>
             <input type="file" accept="image/*" required>
 
@@ -72,8 +72,9 @@
     localStorage.setItem('startupUser', name);
     localStorage.setItem('startupCollege', collegeText);
 
-    window.location.href = 'index.html';
+    window.location.replace('index.html');
 });
+;
     </script>
 </body>
 </html>

@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
     const storedUser = localStorage.getItem("startupUser");
+    const storedCollege = localStorage.getItem("startupCollege");
+
+    if (storedCollege) {
+        document.querySelectorAll(".location").forEach((el) => {
+            el.textContent = storedCollege;
+        });
+    }
 
     if (storedUser) {
         const loginButtons = document.querySelectorAll("#login-btn-desk, #login-btn-mob, .login-button, .loginmob");
@@ -31,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             logoutBox.addEventListener("click", () => {
                 localStorage.removeItem("startupUser");
                 localStorage.removeItem("startupCollege");
-                location.reload();
+                window.location.replace("index.html");
             });
         });
 
@@ -40,26 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const storedCollege = localStorage.getItem("startupCollege");
-    if (storedCollege) {
-        const locationElements = document.querySelectorAll(".location");
-        locationElements.forEach((el) => {
-            el.textContent = storedCollege;
-        });
-    }
-
-    
     if (!storedUser) {
-        document.getElementById("custom-popup").style.display = "flex";
+        const popup = document.getElementById("custom-popup");
+        if (popup) popup.style.display = "flex";
     } else {
         renderCart();
     }
 
     function renderCart() {
         const cartContainer = document.getElementById("cart-container");
-        let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-
+        if (!cartContainer) return;
         
+        let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
         cart = cart.map(item => ({ ...item, quantity: item.quantity || 1 }));
 
         if (cart.length === 0) {
@@ -91,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            
             card.querySelector(".minus-btn").addEventListener("click", () => {
                 if (item.quantity > 1) {
                     item.quantity--;
@@ -100,14 +97,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            
             card.querySelector(".plus-btn").addEventListener("click", () => {
                 item.quantity++;
                 localStorage.setItem("cartItems", JSON.stringify(cart));
                 renderCart();
             });
 
-           
             card.querySelector(".remove-btn").addEventListener("click", () => {
                 cart.splice(index, 1);
                 localStorage.setItem("cartItems", JSON.stringify(cart));
@@ -124,48 +119,49 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         cartContainer.appendChild(submitSection);
 
-        
         document.getElementById("submit-cart-btn").addEventListener("click", () => {
-            document.getElementById("confirm-popup").style.display = "flex";
+            const confirmPopup = document.getElementById("confirm-popup");
+            if (confirmPopup) confirmPopup.style.display = "flex";
         });
     }
-
 
     const yesBtn = document.getElementById("popup-yes-btn");
     if (yesBtn) {
         yesBtn.addEventListener("click", () => {
-            document.getElementById("confirm-popup").style.display = "none";
+            const confirmPopup = document.getElementById("confirm-popup");
+            const submitPopup = document.getElementById("submit-popup");
+            if (confirmPopup) confirmPopup.style.display = "none";
             localStorage.removeItem("cartItems");
-            document.getElementById("submit-popup").style.display = "flex";
+            if (submitPopup) submitPopup.style.display = "flex";
         });
     }
 
     const noBtn = document.getElementById("popup-no-btn");
     if (noBtn) {
         noBtn.addEventListener("click", () => {
-            document.getElementById("confirm-popup").style.display = "none";
+            const confirmPopup = document.getElementById("confirm-popup");
+            if (confirmPopup) confirmPopup.style.display = "none";
         });
     }
-
 
     const homeBtn = document.getElementById("popup-home-btn");
     if (homeBtn) {
         homeBtn.addEventListener("click", () => {
-            window.location.href = "index.html";
+            window.location.replace("index.html");
         });
     }
 
     const loginBtn = document.getElementById("popup-login-btn");
     if (loginBtn) {
         loginBtn.addEventListener("click", () => {
-            window.location.href = "login.html";
+            window.location.replace("login.html");
         });
     }
 
     const closeBtn = document.getElementById("popup-close-btn");
     if (closeBtn) {
         closeBtn.addEventListener("click", () => {
-            window.location.href = "index.html";
+            window.location.replace("index.html");
         });
     }
 });
