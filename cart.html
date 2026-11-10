@@ -101,10 +101,17 @@
         </div>
         
         <div id="confirm-popup" class="popup-overlay">
-            <div class="popup-box">
-                <h3>Confirm Order</h3>
-                <p>Are you sure you want to submit this rental order?</p>
-                <div class="popup-buttons">
+            <div class="popup-box" style="width: 350px;">
+                <h3>Rental Schedule</h3>
+                <p style="font-size: 12px; margin-bottom: 8px;">Delivery (8 AM – 5 PM, min 2 hrs notice):</p>
+                <input type="datetime-local" id="delivery-time-input" style="padding: 6px; border-radius: 6px; border: none; font-size: 13px; width: 90%; background-color: #fff; color: #333; margin-bottom: 10px;">
+                
+                <p style="font-size: 12px; margin-bottom: 8px;">Return Date & Time:</p>
+                <input type="datetime-local" id="return-time-input" style="padding: 6px; border-radius: 6px; border: none; font-size: 13px; width: 90%; background-color: #fff; color: #333;">
+
+                <p id="time-error-msg" style="color: #ff8080; font-size: 12px; margin-top: 8px; display: none; font-weight: bold;"></p>
+
+                <div class="popup-buttons" style="margin-top: 15px;">
                     <button id="popup-yes-btn" style="background-color: #fff1b7; color: #059669; padding: 8px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer;">Yes, Submit</button>
                     <button id="popup-no-btn" style="background-color: white; color: #333; padding: 8px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer;">Cancel</button>
                 </div>

@@ -121,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("submit-cart-btn").addEventListener("click", () => {
             const confirmPopup = document.getElementById("confirm-popup");
+            const errorMsg = document.getElementById("time-error-msg");
+            if (errorMsg) errorMsg.style.display = "none";
             if (confirmPopup) confirmPopup.style.display = "flex";
         });
     }
@@ -128,10 +130,53 @@ document.addEventListener("DOMContentLoaded", () => {
     const yesBtn = document.getElementById("popup-yes-btn");
     if (yesBtn) {
         yesBtn.addEventListener("click", () => {
+            const deliveryInput = document.getElementById("delivery-time-input");
+            const returnInput = document.getElementById("return-time-input");
+            const errorMsg = document.getElementById("time-error-msg");
+
+            if (!deliveryInput.value || !returnInput.value) {
+                errorMsg.textContent = "Please select both delivery and return times.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            const deliveryVal = new Date(deliveryInput.value);
+            const returnVal = new Date(returnInput.value);
+            
+            // Compare timestamps directly using local time values
+            const now = new Date();
+            const minAllowedTime = new Date(now.getTime() + 2 * 60 * 60 * 1000); // 2 hours from now
+
+            const hours = deliveryVal.getHours();
+
+            // Validate delivery hours: 8:00 AM (8) to 5:00 PM (17)
+            if (hours < 8 || hours >= 17) {
+                errorMsg.textContent = "Delivery time must be between 8:00 AM and 5:00 PM.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            // Validate advance notice: at least 2 hours ahead
+            if (deliveryVal < minAllowedTime) {
+                errorMsg.textContent = "Delivery must be requested at least 2 hours in advance.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            // Validate return time is after delivery time
+            if (returnVal <= deliveryVal) {
+                errorMsg.textContent = "Return time must be after the delivery time.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            errorMsg.style.display = "none";
             const confirmPopup = document.getElementById("confirm-popup");
             const submitPopup = document.getElementById("submit-popup");
             if (confirmPopup) confirmPopup.style.display = "none";
+            
             localStorage.removeItem("cartItems");
+            
             if (submitPopup) submitPopup.style.display = "flex";
         });
     }
@@ -140,6 +185,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (noBtn) {
         noBtn.addEventListener("click", () => {
             const confirmPopup = document.getElementById("confirm-popup");
+            const errorMsg = document.getElementById("time-error-msg");
+            if (errorMsg) errorMsg.style.display = "none";
             if (confirmPopup) confirmPopup.style.display = "none";
         });
     }
