@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cart.push(item);
                     localStorage.setItem("cartItems", JSON.stringify(cart));
                     
-                    rentBtn.textContent = "Added!";
+                    rentBtn.textContent = "Added to cart!";
                     rentBtn.style.backgroundColor = "#fff1b7";
                     rentBtn.style.color = "#14532d";
                     rentBtn.disabled = true;
