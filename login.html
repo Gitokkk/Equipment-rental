@@ -71,14 +71,23 @@
     font-size: 14px;
     text-decoration: underline;
 }
+.goback{
+    display: block;
+    color: white;
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    text-decoration: underline;
+}
     </style>
     </head>
 <body>
     <div class="mainlogin">
         <h1>Login</h1>
+        <a href="index.html" class="goback">Go to Homepage</a>
         <form class="entering" id="login-form">
-            <label>Enter username or E-mail</label>
-            <input type="text" id="username" placeholder="Enter a username or email" required>
+            <label>Mobile Number</label>
+            <input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Enter mobile number" required>
             
             <label>Enter password</label>
             <input type="text" id="password" placeholder="Enter a password" required>

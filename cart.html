@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cart</title>
+        <link rel="stylesheet" href="cartstyle.css">
+        <link rel="icon" type="img/png" href="Logo.png">
+    </head>
+    <body>
+
+        <section class="top desktop-only">
+            <a href="index.html" class="logo-link">
+                <img src="Logo.png" alt="Logo" class="logomob">
+            </a> 
+            <span class="location">College</span>
+            
+            <div class="search-box">
+                <input type="text" id="equipment_search_desk" placeholder="Search for equipment..">
+                <button class="search-button" id="search_button_desk">Search</button>
+            </div>
+
+            <div class="orders">
+                <a href="prevorders.html" class="cart-link-wrapper">
+                <button class="orders-button">Previous orders</button>
+                <img class="orders-image" src="orders.svg" alt="Previous orders">
+                </a>
+            </div>
+
+            <div class="cart">
+                <a href="cart.html" class="cart-link-wrapper">
+                <button class="cart-button">Cart</button>  
+                <img class="cart-image" src="cart.svg" alt="Cart">
+                </a>
+            </div>
+
+            <div>
+                <a href="login.html">
+                <button class="login-button" id="login-btn-desk">Login</button>
+                </a>
+            </div>
+        </section>
+
+       <section class="top mobile-only">
+            <input type="checkbox" id="menu-toggle" hidden>
+            <div class="main-bar">
+                <label for="menu-toggle" class="hamburger-btn">☰</label>
+                <a href="index.html" class="logo-link">
+                    <img src="Logo.png" alt="Logo" class="logomob">
+                </a> 
+                <div class="searchmob">
+                    <input type="text" placeholder="Search..." id="equipment_search_mob">
+                    <button class="search-buttonmob" id="search_button_mob">Search</button>
+                </div>
+                <a href="login.html">
+                    <button class="loginmob" id="login-btn-mob">Login</button>
+                </a>
+            </div>
+            <div class="dropdown-menu">
+                <span class="location">College</span>
+                <div class="orders">
+                    <a href="prevorders.html" class="cart-link-wrapper">
+                    <button class="orders-button">Previous orders</button>
+                    <img class="orders-image" src="orders.svg" alt="Previous orders">
+                    </a>
+                </div>
+                <div class="cart">
+                    <a href="cart.html" class="cart-link-wrapper">
+                    <button class="cart-button">Cart</button>  
+                    <img class="cart-image" src="cart.svg" alt="Cart">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="previous">
+            <h1>Your Cart</h1>
+        </div>
+        
+        <div class="equipment-grid" id="cart-container" style="padding: 20px;">
+        </div>
+
+        <div id="custom-popup" class="popup-overlay">
+            <div class="popup-box">
+                <h3>Login Required</h3>
+                <p>Please log in first to view your cart!</p>
+                <div class="popup-buttons">
+                    <button id="popup-login-btn">Go to Login</button>
+                    <button id="popup-close-btn">Go Back</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="submit-popup" class="popup-overlay">
+            <div class="popup-box">
+                <h3>Order Confirmed!</h3>
+                <p>Your equipment has been ordered successfully.</p>
+                <div class="popup-buttons">
+                    <button id="popup-home-btn" style="background-color: #fff1b7; color: #059669; padding: 8px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer;">Go to Homepage</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="confirm-popup" class="popup-overlay">
+            <div class="popup-box">
+                <h3>Confirm Order</h3>
+                <p>Are you sure you want to submit this rental order?</p>
+                <div class="popup-buttons">
+                    <button id="popup-yes-btn" style="background-color: #fff1b7; color: #059669; padding: 8px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer;">Yes, Submit</button>
+                    <button id="popup-no-btn" style="background-color: white; color: #333; padding: 8px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer;">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="cart.js"></script>
+    </body>
+</html>

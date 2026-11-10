@@ -190,6 +190,116 @@ body {
     background-color: #059669;
     color: white;
 }
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.equipment-card {
+    display: flex;             
+    align-items: center;       
+    gap: 20px;                 
+    background-color: #14532d; 
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.equipment-card .price {
+    color: #fff1b7; 
+    font-weight: bold;
+    font-size: 18px;
+}
+.equipment-card img {
+    width: 100px;             
+    height: 100px;          
+    object-fit: cover;         
+    border-radius: 8px;        
+    flex-shrink: 0;            
+}
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1;                        
+    margin-left: 10px;              
+    height: 100%;      
+    gap: 8px;             
+}
+.equipment-card button{
+    height: 50px;
+    width: 70px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.card-info h3 {
+    margin: 0; 
+    color: #fff1b7;
+}
+
+.card-info .description {
+    margin: 0; 
+}
+.popup-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background-color: #14532d;
+    border: 2px solid #fff1b7;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.popup-box h3 {
+    color: #fff1b7;
+    margin-top: 0;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.popup-buttons button {
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+#popup-login-btn {
+    background-color: #fff1b7;
+    color: #059669;
+}
+
+#popup-close-btn {
+    background-color: white;
+    color: #333;
+}
+
 
 
 @media (max-width: 1032px) {
