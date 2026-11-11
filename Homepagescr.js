@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             logoutBox.addEventListener("click", () => {
                 localStorage.removeItem("startupUser");
                 localStorage.removeItem("startupCollege");
-                location.reload();
+                window.location.replace("index.html");
             });
         });
 
@@ -83,9 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("custom-popup").style.display = "flex";
                 } else {
                     let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
-                    cart.push(item);
-                    localStorage.setItem("cartItems", JSON.stringify(cart));
-                    
+                    if (!cart.some(c => c.name === item.name)) {
+    cart.push(item);
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+}
                     rentBtn.textContent = "Added to cart!";
                     rentBtn.style.backgroundColor = "#fff1b7";
                     rentBtn.style.color = "#14532d";
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById("popup-login-btn").addEventListener("click", () => {
-        window.location.href = "login.html";
+        window.location.replace("login.html");
     });
 
     document.getElementById("popup-close-btn").addEventListener("click", () => {

@@ -80,10 +80,10 @@
             <a href="index.html" class="goback">Go to Homepage</a>
             <form class="entering" id="login-form">
                 <label>Mobile Number</label>
-                <input type="tel" id="login-mobile" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" required>
+                <input type="tel" id="login-mobile" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" autocomplete="off" required>
                 
                 <label>Enter password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
+                <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
                 
                 <button type="submit" id="submitbuttoncuh">Submit</button>
                 <label class="noexist">Wrong mobile number or password.</label>
@@ -93,26 +93,43 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                
-                if (localStorage.getItem("startupUser")) {
+                if (localStorage.getItem("startupUser") && localStorage.getItem("startupUser") !== "User") {
                     window.location.replace("index.html");
                 }
             });
 
-            document.getElementById('login-form').addEventListener('submit', (e) => {
-                e.preventDefault(); 
-                const mobileInput = document.getElementById('login-mobile').value.trim();
-                
-                if (mobileInput.length === 10) {
-                    localStorage.setItem("startupUser", "User");
-                    localStorage.setItem("startupCollege", "College");
-                    window.location.replace("index.html");
-                } else {
-                    const messageLabel = document.querySelector('.noexist');
-                    messageLabel.style.display = 'block';
-                    messageLabel.textContent = "Please enter a valid 10-digit mobile number.";
-                }
-            });
+           document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault(); 
+    const mobileInput = document.getElementById('login-mobile').value.trim();
+    const passwordInput = document.getElementById('password').value.trim(); // Added .trim() here
+    const messageLabel = document.querySelector('.noexist');
+
+    const savedMobile = localStorage.getItem('registeredMobile');
+    const savedPassword = localStorage.getItem('registeredPassword');
+    const savedName = localStorage.getItem('registeredName');
+
+    
+    console.log("Entered:", mobileInput, passwordInput);
+    console.log("Saved:", savedMobile, savedPassword);
+
+    if (savedMobile && savedPassword && mobileInput === savedMobile && passwordInput === savedPassword) {
+        messageLabel.style.display = 'none';
+        const savedUsername = localStorage.getItem('registeredUsername');
+if (savedUsername) {
+    localStorage.setItem('startupUser', savedUsername);
+}
+const savedCollege = localStorage.getItem('registeredCollege');
+if (savedCollege) {
+    localStorage.setItem('startupCollege', savedCollege);
+}
+        window.location.replace("index.html");
+    } else {
+        messageLabel.style.display = 'block';
+        messageLabel.textContent = "Wrong mobile number or password.";
+    }
+});
+            
+            
         </script>
     </body>
 </html>

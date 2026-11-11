@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Among Us</title>
     <link rel="stylesheet" href="Homepagecss.css">
-    <link rel="icon" type = "img/png" href = "Logo.png">
+    <link rel="icon" type="img/png" href="Logo.png">
     <style>
         .login-box {
             max-width: 400px;
@@ -37,12 +37,13 @@
 </head>
 <body>
     <div class="login-box">
-        <h2 style="text-align: center; color: #fff1b7;">Student Login</h2>
+        <h2 style="text-align: center; color: #fff1b7;">Student Sign Up</h2>
         <form id="real-login-form">
             <label>Enter your full name</label>
-            <input type="text" id="username-input" placeholder="Enter your name" required>
+            <input type="text" id="username-input" placeholder="Enter your name" autocomplete="off" required>
+            
             <label>Enter your mobile number</label>
-            <input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Enter mobile number" required>
+            <input type="tel" id="signup-mobile" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit mobile number" autocomplete="off" required>
 
             <label>Select College</label>
             <select id="college-select" required>
@@ -52,9 +53,11 @@
             </select>
 
             <label>Enter username</label>
-            <input type="text" id="username" placeholder="Enter a username" required>
+            <input type="text" id="username" placeholder="Enter a username" autocomplete="off" required>
+            
             <label>Enter password</label>
-            <input type="text" id="username" placeholder="Enter a password" autocomplete="off" required>
+            <input type="password" id="password" placeholder="Enter a password" autocomplete="new-password" required>
+            
             <label>Upload ID Card Photo</label>
             <input type="file" accept="image/*" required>
 
@@ -63,18 +66,31 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem("startupUser") && localStorage.getItem("startupUser") !== "User") {
+                window.location.replace("index.html");
+            }
+        });
+
         document.getElementById('real-login-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('username-input').value;
-    const collegeDropdown = document.getElementById('college-select');
-    const collegeText = collegeDropdown.options[collegeDropdown.selectedIndex].text;
+            e.preventDefault();
+            const fullName = document.getElementById('username-input').value.trim();
+            const usernameInput = document.getElementById('username').value.trim();
+            const mobileInput = document.getElementById('signup-mobile').value.trim();
+            const passwordInput = document.getElementById('password').value;
+            const collegeDropdown = document.getElementById('college-select');
+            const collegeText = collegeDropdown.options[collegeDropdown.selectedIndex].text;
 
-    localStorage.setItem('startupUser', name);
-    localStorage.setItem('startupCollege', collegeText);
+            localStorage.setItem('registeredMobile', mobileInput);
+            localStorage.setItem('registeredPassword', passwordInput);
+            localStorage.setItem('registeredName', fullName);
+            localStorage.setItem('registeredUsername', usernameInput);
+            localStorage.setItem('startupUser', usernameInput);
+            localStorage.setItem('startupCollege', collegeText);
+            localStorage.setItem('registeredCollege', collegeText);
 
-    window.location.replace('index.html');
-});
-;
+            window.location.replace('index.html');
+        });
     </script>
 </body>
 </html>

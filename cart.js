@@ -143,27 +143,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const deliveryVal = new Date(deliveryInput.value);
             const returnVal = new Date(returnInput.value);
             
-            // Compare timestamps directly using local time values
             const now = new Date();
             const minAllowedTime = new Date(now.getTime() + 2 * 60 * 60 * 1000); // 2 hours from now
 
             const hours = deliveryVal.getHours();
 
-            // Validate delivery hours: 8:00 AM (8) to 5:00 PM (17)
             if (hours < 8 || hours >= 17) {
                 errorMsg.textContent = "Delivery time must be between 8:00 AM and 5:00 PM.";
                 errorMsg.style.display = "block";
                 return;
             }
 
-            // Validate advance notice: at least 2 hours ahead
             if (deliveryVal < minAllowedTime) {
                 errorMsg.textContent = "Delivery must be requested at least 2 hours in advance.";
                 errorMsg.style.display = "block";
                 return;
             }
 
-            // Validate return time is after delivery time
             if (returnVal <= deliveryVal) {
                 errorMsg.textContent = "Return time must be after the delivery time.";
                 errorMsg.style.display = "block";
@@ -174,6 +170,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const confirmPopup = document.getElementById("confirm-popup");
             const submitPopup = document.getElementById("submit-popup");
             if (confirmPopup) confirmPopup.style.display = "none";
+
+            const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+            if (cartItems.length) {
+                const orders = JSON.parse(localStorage.getItem("previousOrders")) || [];
+                orders.unshift({
+                    date: new Date().toLocaleString(),
+                    delivery: deliveryInput.value,
+                    returnBy: returnInput.value,
+                    items: cartItems
+                });
+                localStorage.setItem("previousOrders", JSON.stringify(orders));
+            }
             
             localStorage.removeItem("cartItems");
             
